@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
+
 namespace SpeedTestLogger
 {
     public class LoggerConfiguration
@@ -10,6 +11,7 @@ namespace SpeedTestLogger
         public readonly string UserId;
         public readonly int LoggerId;
         public readonly RegionInfo LoggerLocation;
+        public readonly Uri ApiUrl;
 
         public LoggerConfiguration()
         {
@@ -25,6 +27,7 @@ namespace SpeedTestLogger
             Console.WriteLine("Logger located in {0}", LoggerLocation.EnglishName);
             UserId = configuration["userId"];
             LoggerId = Int32.Parse(configuration["loggerId"]);
+            ApiUrl = new Uri(configuration["speedTestApiUrl"]);
         }
     }
 }
